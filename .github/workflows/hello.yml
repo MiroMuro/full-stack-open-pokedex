@@ -10,3 +10,7 @@ jobs:
     steps:
       - name: Say hello
         run: echo "Hello world!"
+      - name: Show current date
+        run: date
+      - name: List files
+        run: ls -l
