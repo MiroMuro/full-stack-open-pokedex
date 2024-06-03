@@ -24,6 +24,9 @@ app.get("/api", (req, res) => {
 app.get("/kello", (req, res) => {
   res.json({ message: "Hello from kello!" });
 });
+app.get("pisttasi", (req, res) => {
+  res.json({ message: "Hello from pisttasi!" });
+});
 app.listen(PORT, () => {
   // eslint-disable-next-line
   console.log(`server started on port ${PORT}`);
