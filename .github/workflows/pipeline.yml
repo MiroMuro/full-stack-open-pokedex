@@ -47,24 +47,14 @@ jobs:
         if: ${{env.IS_PULL_REQUEST == 'true'}}
         run: |
           echo "This step runs only for pull request events." 
-          CONTENT=$(curl -s -H "Accept: application/vnd.github.v3+json" $LATEST_COMMIT_MESSAGE_LINK | jq '.[0].commit.message')
+          CONTENT=$(curl -s -H "Accept: application/vnd.github.v3+json" $LATEST_LINK | jq '.[0].commit.message')
           echo "Fetched content: $CONTENT"
 
       - name: is this pull request
         env:
           IS_PULL_REQUEST: ${{ github.event_name == 'pull_request' }}
         run: echo "$IS_PULL_REQUEST"
-      - name: latest commit message of pull request
-        if: ${{env.is_pull_request}}
-        env:
-          LATEST_COMMIT_MESSAGE_LINK: ${{toJson(github.event.pull_request._links.commits.href)}}
-        run: echo "$LATEST_COMMIT_MESSAGE_LINK"
-      - name: fetch latest commit message
-        if: ${{env.is_pull_request}}
-        run: |
-          echo "This step runs only for pull request events." 
-          CONTENT=$(curl -s -H "Accept: application/vnd.github.v3+json" $LATEST_COMMIT_MESSAGE_LINK | jq '.[0].commit.message')
-          echo "Fetched content: $CONTENT"
+
   simple_deployment_pipeline:
     runs-on: ubuntu-20.04
     steps:
