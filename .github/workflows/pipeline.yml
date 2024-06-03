@@ -24,7 +24,7 @@ jobs:
       - name: commit messages
         env:
           COMMIT_MESSAGES: ${{ toJson(github.event.commits.*.message) }}
-        run: echo "$COMMIT_MESSAGES
+        run: echo "$COMMIT_MESSAGES"
       - name: is this pull request
         env:
           IS_PULL_REQUEST: ${{ github.event_name == 'pull_request' }}
