@@ -15,12 +15,7 @@ app.get("/health", (req, res) => {
 
   res.send("ok");
 });
-app.get("test", (req, res) => {
-  res.send("test");
-});
-app.get("/api", (req, res) => {
-  res.json({ message: "Hello from server!" });
-});
+
 app.listen(PORT, () => {
   // eslint-disable-next-line
   console.log(`server started on port ${PORT}`);
