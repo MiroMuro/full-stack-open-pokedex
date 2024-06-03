@@ -47,7 +47,7 @@ jobs:
         if: ${{env.IS_PULL_REQUEST == 'true'}}
         run: |
           echo "This step runs only for pull request events." 
-          echo "CONTENT=$(curl -s -H "Accept: application/vnd.github.v3+json" $LATEST_LINK | jq '.[0].commit.message')" >> $GITHUB_ENV
+          echo "CONTENT=${{(curl -s -H "Accept: application/vnd.github.v3+json" $LATEST_LINK | jq '.[0].commit.message')}}" >> $GITHUB_ENV
           echo "Fetched content: $CONTENT"
 
       - name: is this pull request
