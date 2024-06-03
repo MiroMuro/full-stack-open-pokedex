@@ -34,7 +34,7 @@ jobs:
           IS_PULL_REQUEST: ${{ github.event_name == 'pull_request' }}
         run: echo "$IS_PULL_REQUEST"
       - name: latest commit message of pull request
-        if: $IS_PULL_REQUEST
+        if: ${{IS_PULL_REQUEST}}
         env:
           LATEST_COMMIT_MESSAGE_LINK: ${{toJson(github.event.pull_request._links.commits.href)}}
         run: echo "$LATEST_COMMIT_MESSAGE"
