@@ -19,7 +19,7 @@ app.get("test", (req, res) => {
   res.send("test");
 });
 app.get("/api", (req, res) => {
-  res.json({ message: "Hello from server!" });
+  res.json({ message: "TOinen uusi!" });
 });
 app.get("/kello", (req, res) => {
   res.json({ message: "Hello from kello!" });
