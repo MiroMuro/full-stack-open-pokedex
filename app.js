@@ -15,8 +15,8 @@ app.get("/health", (req, res) => {
 
   res.send("ok");
 });
-app.get("/new-feature", (req, res) => {
-  res.send("This is a new feature");
+app.get("pirkka", (req, res) => {
+  res.send("pirkka");
 });
 app.listen(PORT, () => {
   // eslint-disable-next-line
