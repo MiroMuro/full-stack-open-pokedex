@@ -35,12 +35,7 @@ const PokemonPage = ({ previous, next }) => {
   );
   //eslint-disable-next-line
   console.log("hiddenAbility=", hiddenAbility);
-  //eslint-disable-next-line
-  console.log("The pokemon is", pokemon);
-  //eslint-disable-next-line
-  console.log("The next pokemon is", next);
-  //eslint-disable-next-line
-  console.log("The previous pokemon is", previous);
+
   return (
     <>
       <div className="links">
