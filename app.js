@@ -18,6 +18,9 @@ app.get("/health", (req, res) => {
 app.get("test", (req, res) => {
   res.send("test");
 });
+app.get("/helloworld", (req, res) => {
+  res.send("Hello World");
+});
 app.get("/api", (req, res) => {
   res.json({ message: "Hello from server!" });
 });
