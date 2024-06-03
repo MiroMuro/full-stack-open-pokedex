@@ -29,6 +29,22 @@ jobs:
         env:
           COMMIT_MESSAGES: ${{ toJson(github.event.commits.*.message) }}
         run: echo "$COMMIT_MESSAGES"
+      - name: Determine if this is a pull request
+        run: |
+          if [ "${{ github.event_name }}" == "pull_request" ]; then
+            echo "This is a pull request event."
+            echo "IS_PULL_REQUEST=true" >> $GITHUB_ENV
+          else
+            echo "This is not a pull request event."
+            echo "IS_PULL_REQUEST=false" >> $GITHUB_ENV
+          fi
+
+      - name: Print the IS_PULL_REQUEST variable
+        run: echo "IS_PULL_REQUEST=$IS_PULL_REQUEST"
+
+      - name: Conditional step based on IS_PULL_REQUEST
+        if: env.IS_PULL_REQUEST == 'true'
+        run: echo "This step runs only for pull request events."
       - name: is this pull request
         env:
           IS_PULL_REQUEST: ${{ github.event_name == 'pull_request' }}
