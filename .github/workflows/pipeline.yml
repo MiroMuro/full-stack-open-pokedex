@@ -25,6 +25,10 @@ jobs:
         env:
           COMMIT_MESSAGES: ${{ toJson(github.event.commits.*.message) }}
         run: echo "$COMMIT_MESSAGES
+      - name: is this pull request
+        env:
+          IS_PULL_REQUEST: ${{ github.event_name == 'pull_request' }}
+        run: echo "$IS_PULL_REQUEST"
   simple_deployment_pipeline:
     runs-on: ubuntu-20.04
     steps:
