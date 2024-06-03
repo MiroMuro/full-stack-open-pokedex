@@ -7,7 +7,7 @@ on:
   pull_request:
     branches: [main]
     types: [opened, synchronize]
-    
+
 jobs:
   a_test_job:
     runs-on: ubuntu-20.04
@@ -24,11 +24,7 @@ jobs:
       - name: commit messages
         env:
           COMMIT_MESSAGES: ${{ toJson(github.event.commits.*.message) }}
-        run: echo "$COMMIT_MESSAGES"
-      -name: contains pull request
-        env:
-          PULL_REQUEST: ${{ contains(fromJSON('["pull_request"]'), github.event_name) }}
-        run: echo "$PULL_REQUEST"
+        run: echo "$COMMIT_MESSAGES
   simple_deployment_pipeline:
     runs-on: ubuntu-20.04
     steps:
