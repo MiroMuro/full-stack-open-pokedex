@@ -70,7 +70,7 @@ jobs:
           serviceId: ${{ secrets.RENDER_SERVICE_ID }}
           apiKey: ${{ secrets.RENDER_API_KEY }}
       - name: Notify discord on success
-        if: ${{success() && steps.render_deployment.conclusion == 'success'}}
+        if: ${{success()}}
         uses: rjstone/discord-webhook-notify@v1
         with:
           severity: "info"
