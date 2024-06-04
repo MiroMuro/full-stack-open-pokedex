@@ -50,7 +50,7 @@ jobs:
         with:
           severity: "info"
           description: "Npm install successful"
-          webhook_url: ${{ secrets.DISCORD_WEBHOOK}}
+          webhookUrl: ${{ secrets.DISCORD_WEBHOOK}}
       - name: Check style with Lint
         run: npm run eslint
       - name: Build
@@ -75,14 +75,14 @@ jobs:
         with:
           severity: "info"
           description: "Deployment successful"
-          webhook_url: ${{ secrets.DISCORD_WEBHOOK}}
+          webhookUrl: ${{ secrets.DISCORD_WEBHOOK}}
       - name: Notify discord on failure
         if: ${{failure() && steps.render_deployment.conclusion == 'failure'}}
         uses: rjstone/discord-webhook-notify@v1
         with:
           severity: "error"
           description: "Deployment failed"
-          webhook_url: ${{ secrets.DISCORD_WEBHOOK}}
+          webhookUrl: ${{ secrets.DISCORD_WEBHOOK}}
   tag_release:
     runs-on: ubuntu-20.04
     needs: [simple_deployment_pipeline]
