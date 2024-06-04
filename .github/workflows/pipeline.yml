@@ -64,6 +64,7 @@ jobs:
           start: npm run start-prod
           wait-on: http://localhost:5000
       - name: Render Deployment
+        id: render_deployment
         if: ${{ github.event_name == 'push' && env.CONTENT != '#skip'}}
         uses: sws2apps/render-deployment@v1.6.0
         with:
@@ -75,6 +76,13 @@ jobs:
         with:
           severity: "info"
           description: "Deployment successful"
+          webhookUrl: ${{ secrets.DISCORD_WEBHOOK}}
+      - name: Notify discord on cancel
+        if: ${{cancelled()}}
+        uses: rjstone/discord-webhook-notify@v1
+        with:
+          severity: "warn"
+          description: "Deployment cancelled"
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK}}
       - name: Notify discord on failure
         if: ${{failure() && steps.render_deployment.conclusion == 'failure'}}
